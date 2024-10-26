@@ -8,25 +8,32 @@ package gym;
  *
  * @author user
  */
-public class Trainer{
-    private String ID;
-    private String Name;
+public class Trainer implements Entity {
+
+    private String trainerId;
+    private String name;
     private String email;
     private String speciality;
-    private String phonenumber;
+    private String phoneNumber;
 
-    public Trainer( String ID, String Name,String email, String speciality, String phonenumber) {
-       this.ID=ID;
-       this.Name=Name;
+    public Trainer(String trainerId, String name, String email, String speciality, String phoneNumber) {
+        this.trainerId = trainerId;
+        this.name = name;
         this.email = email;
         this.speciality = speciality;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
     }
-    String LineRepresentation()
-    {
-        String TrainerDetails=this.ID+","+this.Name+","+this.email+","+this.speciality+","+this.phonenumber;
+
+   
+
+   public String LineRepresentation() {
+        String TrainerDetails = this.trainerId + "," + this.name + "," + this.email + "," + this.speciality + "," + this.phoneNumber;
         return TrainerDetails;
-               
+
     }
-    
+    public String getSearchKey()
+    {
+        return this.trainerId;
+    }
+
 }

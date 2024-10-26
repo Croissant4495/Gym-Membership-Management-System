@@ -11,7 +11,7 @@ package gym;
 interface Entity {
 
    String LineRepresentation();
-   String SearchKey();
+   String getSearchKey();
  
     
 }
