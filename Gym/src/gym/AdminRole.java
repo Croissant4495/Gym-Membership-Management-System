@@ -4,6 +4,8 @@
  */
 package gym;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author user
@@ -19,9 +21,20 @@ public class AdminRole {
     public void addTrainer(String trainerId, String name, String email, String specialty, String phoneNumber)
     {
         Trainer NewTrainer=new Trainer(trainerId,  name,  email,  specialty,  phoneNumber);
-      //  database.insertRecord(NewTrainer);
+       database.insertRecord(NewTrainer);
         
     }
-  
+    public ArrayList<Trainer> getListofTrainers()
+    {
+       return  database.returnAllrecords();
+    }
+   public void removeTrainer (String key)
+   {
+       database.deleteRecord(key);
+   }
+      public void logout()
+       {
+           database.saveToFile();
+       }
   
 }
