@@ -6,28 +6,29 @@ package gym;
 
 import java.util.*;
 import java.io.*;
+import java.time.LocalDate;
 
 /**
  *
  * @author Abdel
  */
-public class ClassDatabase implements Database {
-    private ArrayList<Class> records;
+public class MemberClassRegistrationDatabase implements Database {
+    private ArrayList<MemberClassRegistration> records;
     private String filename;
 
-    public ClassDatabase(String filename) {
+    public MemberClassRegistrationDatabase(String filename) {
         this.filename = filename;
         this.records = new ArrayList<>();
     }
-
+    
     @Override
     public void readFromFile() {
         try {
             Scanner scanner = new Scanner(new File(this.filename));
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                Class myClass = createRecordFrom(line);
-                records.add(myClass);
+                MemberClassRegistration myReg = createRecordFrom(line);
+                records.add(myReg);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not Found.");
@@ -35,19 +36,18 @@ public class ClassDatabase implements Database {
     }
     
     @Override
-    public Class createRecordFrom(String line) {
+    public MemberClassRegistration createRecordFrom(String line) {
         String[] stringSplitter = line.split(",");
-        String id = stringSplitter[0];
-        String name = stringSplitter[1];
-        String trainerID = stringSplitter[2];
-        int duration = Integer.parseInt(stringSplitter[3]);
-        int seats = Integer.parseInt(stringSplitter[4]);
-        Class myClass = new Class(id, name, trainerID, duration, seats);
-        return myClass;
+        String memberID = stringSplitter[0];
+        String classID = stringSplitter[1];
+        String status = stringSplitter[2];
+        LocalDate regDate = LocalDate.parse(stringSplitter[3]);
+        MemberClassRegistration myReg = new MemberClassRegistration(memberID, classID, status, regDate);
+        return myReg;
     }
     
     @Override
-    public ArrayList<Class> returnAllRecords(){
+    public ArrayList<MemberClassRegistration> returnAllRecords(){
         return this.records;
     }
 
@@ -62,7 +62,7 @@ public class ClassDatabase implements Database {
     }
 
     @Override
-    public Class getRecord(String key) {
+    public MemberClassRegistration getRecord(String key) {
         for (int i = 0; i < records.size(); i++) {
             if (records.get(i).getSearchKey().equals(key)) {
                 return records.get(i);
@@ -73,8 +73,8 @@ public class ClassDatabase implements Database {
 
     @Override
     public void insertRecord(Entity record) {
-        if (!records.contains((Class)record)) {
-            records.add((Class)record);
+        if (!records.contains((MemberClassRegistration)record)) {
+            records.add((MemberClassRegistration)record);
         }
     }
 
@@ -91,8 +91,8 @@ public class ClassDatabase implements Database {
     @Override
     public void saveToFile() {
         try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(this.filename))) {
-            for (Class myClass : records) {
-                myWriter.write(myClass.LineRepresentation());
+            for (MemberClassRegistration myReg : records) {
+                myWriter.write(myReg.LineRepresentation());
                 myWriter.newLine();
             }
             myWriter.close();
@@ -101,4 +101,3 @@ public class ClassDatabase implements Database {
         }
     }
 }
-
