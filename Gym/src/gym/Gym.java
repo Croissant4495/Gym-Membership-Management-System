@@ -5,6 +5,7 @@
 package gym;
 
 import java.time.LocalDate;
+import java.util.*;
 
 
 /**
@@ -18,8 +19,13 @@ public class Gym {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String test = LocalDate.now().toString();
-        System.out.println(test);
+        MemberClassRegistrationDatabase mydata = new MemberClassRegistrationDatabase("Registration.txt");
+        mydata.readFromFile();
+        ArrayList<MemberClassRegistration> list = mydata.returnAllRecords();
+        MemberClassRegistration temp = mydata.createRecordFrom(list.get(0).LineRepresentation());
+        mydata.insertRecord(temp);
+
+        mydata.saveToFile();
     }
     
 }

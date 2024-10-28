@@ -24,14 +24,19 @@ public class MemberClassRegistrationDatabase implements Database {
     @Override
     public void readFromFile() {
         try {
-            Scanner scanner = new Scanner(new File(this.filename));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                MemberClassRegistration myReg = createRecordFrom(line);
-                records.add(myReg);
+            File myFile = new File(this.filename);
+            if(myFile.createNewFile()){
+                System.out.println("New File created called: " + this.filename);
+            }else{
+                Scanner scanner = new Scanner(myFile);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    MemberClassRegistration myReg = createRecordFrom(line);
+                    records.add(myReg);
+                }
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not Found.");
+        } catch (IOException e) {
+            System.out.println("Error occured while opening file.");
         }
     }
     
@@ -40,8 +45,8 @@ public class MemberClassRegistrationDatabase implements Database {
         String[] stringSplitter = line.split(",");
         String memberID = stringSplitter[0];
         String classID = stringSplitter[1];
-        String status = stringSplitter[2];
-        LocalDate regDate = LocalDate.parse(stringSplitter[3]);
+        LocalDate regDate = LocalDate.parse(stringSplitter[2]);
+        String status = stringSplitter[3];
         MemberClassRegistration myReg = new MemberClassRegistration(memberID, classID, status, regDate);
         return myReg;
     }
@@ -73,7 +78,7 @@ public class MemberClassRegistrationDatabase implements Database {
 
     @Override
     public void insertRecord(Entity record) {
-        if (!records.contains((MemberClassRegistration)record)) {
+        if (!this.contains(((MemberClassRegistration)record).getSearchKey())) {
             records.add((MemberClassRegistration)record);
         }
     }
