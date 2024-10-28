@@ -13,8 +13,8 @@ import java.io.*;
  */
 public interface Database{
     public void readFromFile();
-    public void createRecordFrom(String key);
-    public Entity returnAllRecords();
+    public Entity createRecordFrom(String line);
+    public ArrayList<? extends Entity> returnAllRecords();
     public boolean contains(String key);
     public Entity getRecord(String key);
     public void insertRecord(Entity record);
