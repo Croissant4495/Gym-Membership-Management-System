@@ -12,6 +12,7 @@ import java.io.*;
  * @author Abdel
  */
 public class ClassDatabase implements Database {
+    
     private ArrayList<Class> records;
     private String filename;
 

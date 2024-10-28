@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author user
  */
-public class MemberDatabase {
+public class MemberDatabase implements Database{
 
     private ArrayList<Member> records;
     private String filename;
@@ -25,20 +25,22 @@ public class MemberDatabase {
         this.filename = filename;
         this.records = new ArrayList<>();
     }
-
-    public void readFromFile(String filename) {
+    
+    @Override
+    public void readFromFile() {
         try {
-            Scanner scanner = new Scanner(new File(filename));
+            Scanner scanner = new Scanner(new File(this.filename));
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Member member = createRecordFrom(line);
                 records.add(member);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File not Found.");
         }
     }
 
+    @Override
     public Member createRecordFrom(String line) {
 
         String[] stringSplitter = line.split(",");
@@ -52,20 +54,22 @@ public class MemberDatabase {
         return member;
     }
 
-    public ArrayList<Member> returnAllrecords() {
+    @Override
+    public ArrayList<Member> returnAllRecords() {
         return records;
     }
 
-    public Boolean contains(String key) {
+    @Override
+    public boolean contains(String key) {
         for (int i = 0; i < records.size(); i++) {
             if (records.get(i).getSearchKey().equals(key)) {
                 return true;
             }
         }
-
         return false;
     }
 
+    @Override
     public Member getRecord(String key) {
         Member gettingMember = null;
         for (int i = 0; i < records.size(); i++) {
@@ -77,12 +81,14 @@ public class MemberDatabase {
         return gettingMember;
     }
 
-    public void insertRecord(Member record) {
-        if (!records.contains(record)) {
-            records.add(record);
+    @Override
+    public void insertRecord(Entity record) {
+        if (!records.contains((Member)record)) {
+            records.add((Member)record);
         }
     }
 
+    @Override
     public void deleteRecord(String key) {
         for (int i = 0; i < records.size(); i++) {
             if (records.get(i).getSearchKey().equals(key)) {
@@ -92,6 +98,7 @@ public class MemberDatabase {
         }
     }
 
+    @Override
     public void saveToFile() {
         try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(this.filename))) {
             for (Member member : records) {
@@ -100,7 +107,6 @@ public class MemberDatabase {
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
         }
     }
 
