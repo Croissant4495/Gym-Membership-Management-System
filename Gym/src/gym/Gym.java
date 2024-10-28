@@ -4,6 +4,9 @@
  */
 package gym;
 
+import java.time.LocalDate;
+
+
 /**
  *
  * @author Abdel
@@ -15,6 +18,8 @@ public class Gym {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String test = LocalDate.now().toString();
+        System.out.println(test);
     }
     
 }

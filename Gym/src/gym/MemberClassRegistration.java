@@ -41,7 +41,7 @@ public class MemberClassRegistration implements Entity{
     }
     
     public String LineRepresentation() {
-        String RegistrationDetails = this.memberId + "," + this.classID + "," + this.registrationDate + ","+ this.status;
+        String RegistrationDetails = this.memberId + "," + this.classID + "," + this.registrationDate.toString() + ","+ this.status;
         return RegistrationDetails;
 
     }
