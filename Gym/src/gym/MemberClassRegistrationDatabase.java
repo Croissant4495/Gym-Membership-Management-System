@@ -12,7 +12,7 @@ import java.time.LocalDate;
  *
  * @author Abdel
  */
-public class MemberClassRegistrationDatabase extends Database<MemberClassRegistration>{
+public class MemberClassRegistrationDatabase extends Database{
     
     public MemberClassRegistrationDatabase(String fileName){
         super(fileName);

@@ -33,7 +33,7 @@ public class TrainerRole {
         }
     }
     
-    public ArrayList<Member> getListOfMembers(){
+    public ArrayList<Entity> getListOfMembers(){
         return this.memberDatabase.returnAllRecords();
     }
     
@@ -43,7 +43,7 @@ public class TrainerRole {
         }
     }
     
-    public ArrayList<Class> getListOfClasses(){
+    public ArrayList<Entity> getListOfClasses(){
         return this.classDatabase.returnAllRecords();
     }
     
@@ -83,7 +83,7 @@ public class TrainerRole {
         }
     }
     
-    public ArrayList<MemberClassRegistration> getListOfRegistration(){
+    public ArrayList<Entity> getListOfRegistration(){
         return this.registrationDatabase.returnAllRecords();
     }
     

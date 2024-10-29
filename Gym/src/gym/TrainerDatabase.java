@@ -11,7 +11,7 @@ import java.io.*;
  *
  * @author user
  */
-public class TrainerDatabase extends Database<Trainer>{
+public class TrainerDatabase extends Database{
 
     public TrainerDatabase(String filename) {
         super(filename);

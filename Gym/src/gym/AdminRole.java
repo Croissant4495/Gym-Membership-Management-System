@@ -25,7 +25,7 @@ public class AdminRole {
        database.insertRecord(NewTrainer);
         
     }
-    public ArrayList<Trainer> getListofTrainers()
+    public ArrayList<Entity> getListofTrainers()
     {
        return database.returnAllRecords();
     }

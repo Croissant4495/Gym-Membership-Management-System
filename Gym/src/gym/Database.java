@@ -11,8 +11,8 @@ import java.io.*;
  *
  * @author Abdel
  */
-abstract public class Database<T extends Entity>{
-    private ArrayList<T> records;
+abstract public class Database{
+    private ArrayList<Entity> records;
     private String filename;
 
     public Database(String filename) {
@@ -29,7 +29,7 @@ abstract public class Database<T extends Entity>{
                 Scanner scanner = new Scanner(myFile);
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    T myE = createRecordFrom(line);
+                    Entity myE = createRecordFrom(line);
                     records.add(myE);
                 }
             }
@@ -38,7 +38,7 @@ abstract public class Database<T extends Entity>{
         }
     }
     
-    public ArrayList<T> returnAllRecords(){
+    public ArrayList<Entity> returnAllRecords(){
         return this.records;
     }
     
@@ -60,7 +60,7 @@ abstract public class Database<T extends Entity>{
         return null;
     }
     
-    public void insertRecord(T record){
+    public void insertRecord(Entity record){
         if (!this.contains(record.getSearchKey())) {
             records.add(record);
         }
@@ -76,7 +76,7 @@ abstract public class Database<T extends Entity>{
     }
     public void saveToFile(){
         try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(this.filename))) {
-            for (T myE : records) {
+            for (Entity myE : records) {
                 myWriter.write(myE.LineRepresentation());
                 myWriter.newLine();
             }
@@ -86,5 +86,5 @@ abstract public class Database<T extends Entity>{
         }
     }
     
-    abstract public T createRecordFrom(String line);
+    abstract public Entity createRecordFrom(String line);
 }

@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author user
  */
-public class MemberDatabase extends  Database<Member>{
+public class MemberDatabase extends  Database{
     public MemberDatabase(String fileName){
         super(fileName);
     }

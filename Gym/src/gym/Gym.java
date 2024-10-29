@@ -21,18 +21,20 @@ public class Gym {
         AdminRole admin = new AdminRole();
         TrainerRole trainer = new TrainerRole();
         int checker;
-        System.out.print("Please enter 1 for being an admin and 2 for being a trainer: ");
-        checker = inputNum();
-        switch (checker) {
-            case 1:
-                adminLoop(admin);
-                break;
-            case 2:
-                trainerLoop(trainer);
-                break;
-            default:
-
-        }
+        do{
+            System.out.print("Please enter 1 for being an admin and 2 for being a trainer: ");
+            checker = inputNum();
+            switch (checker) {
+                case 1:
+                    adminLoop(admin);
+                    break;
+                case 2:
+                    trainerLoop(trainer);
+                    break;
+                default:
+                    System.out.println("Invalid Option");
+            }
+        }while(checker != 1 && checker != 2);
     }
     
     public static int inputNum() {
