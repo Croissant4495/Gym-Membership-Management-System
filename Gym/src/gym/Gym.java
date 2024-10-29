@@ -46,8 +46,7 @@ public class Gym {
 
     public static void adminLoop(AdminRole admin) {
         int option;
-        boolean x = true;
-        while (x) {
+        do{
             option = AdminMenu();
             switch (option) {
 
@@ -64,10 +63,8 @@ public class Gym {
                     logout(admin);
                 default:
                     System.out.println("Invalid option. ");
-                    x = false;
             }
-        }
-
+        }while(option!=9);
     }
 
     public static void addTrainer(AdminRole admin) {
@@ -129,35 +126,38 @@ public class Gym {
     }
 
     public static void trainerLoop(TrainerRole myT) {
-        int option = trainerMenu();
-        switch(option){
-            case 1:
-                addMember(myT);
-                break;
-            case 2:
-                printElements(myT.getListOfMembers());
-                break;
-            case 3:
-                addClass(myT);
-                break;
-            case 4:
-                printElements(myT.getListOfClasses());
-                break;
-            case 5:
-                registerForClass(myT);
-                break;
-            case 6:
-                cancelReg(myT);
-                break;
-            case 7:
-                printElements(myT.getListOfRegistration());
-                break;
-            case 8:
-                myT.logout();
-                break;
-            default:
-                System.out.println("Invalid choice.");
-        }
+        int option;
+        do{
+            option = trainerMenu();
+            switch(option){
+                case 1:
+                    addMember(myT);
+                    break;
+                case 2:
+                    printElements(myT.getListOfMembers());
+                    break;
+                case 3:
+                    addClass(myT);
+                    break;
+                case 4:
+                    printElements(myT.getListOfClasses());
+                    break;
+                case 5:
+                    registerForClass(myT);
+                    break;
+                case 6:
+                    cancelReg(myT);
+                    break;
+                case 7:
+                    printElements(myT.getListOfRegistration());
+                    break;
+                case 8:
+                    myT.logout();
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }while(option != 8);
     }
     
     public static void addMember(TrainerRole myT){
