@@ -68,7 +68,7 @@ public class TrainerRole {
         String searchKey = memberID + classID;
         if(this.registrationDatabase.contains(searchKey)){
             MemberClassRegistration tempReg = (MemberClassRegistration)this.registrationDatabase.getRecord(searchKey);
-            if(tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))){
+            if(tempReg.getRegistrationDate().isBefore(LocalDate.now().plusDays(3))){
                 tempReg.setRegistrationStatus("canceled");
                 Class tempClass = (Class)this.classDatabase.getRecord(tempReg.getClassID());
                 tempClass.setAvailableSeats(tempClass.getAvailableSeats() + 1);
