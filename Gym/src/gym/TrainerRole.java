@@ -83,7 +83,7 @@ public class TrainerRole {
         }
     }
     
-    public ArrayList<MemberClassRegistration> MemberClassRegistration(){
+    public ArrayList<MemberClassRegistration> getListOfRegistration(){
         return this.registrationDatabase.returnAllRecords();
     }
     

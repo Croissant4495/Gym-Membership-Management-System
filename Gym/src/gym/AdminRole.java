@@ -16,6 +16,7 @@ public class AdminRole {
 
     public AdminRole() {
         this.database = new TrainerDatabase("trainer.txt");
+           this.database.readFromFile();
     }
 
     public void addTrainer(String trainerId, String name, String email, String specialty, String phoneNumber)
