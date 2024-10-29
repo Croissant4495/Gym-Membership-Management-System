@@ -68,9 +68,23 @@ public class Gym {
 
         }
         }
+    
+    public static int inputNum(){
+        Scanner myScan = new Scanner(System.in);
+        return Integer.parseInt(myScan.nextLine().replaceAll(" ", ""));
+    }
+    
+    public static double inputNumD(){
+        Scanner myScan = new Scanner(System.in);
+        return Double.parseDouble(myScan.nextLine().replaceAll(" ", ""));
+    }
+    
+    public static String inputLine(){
+        Scanner myScan = new Scanner(System.in);
+        return myScan.nextLine().trim();
+    }
  
     public static int trainerMenu(){
-        Scanner s = new Scanner(System.in);
         System.out.println("Choose one of the following options:");
         System.out.println("1)Add Member");
         System.out.println("2)Get list of Members");
@@ -80,7 +94,12 @@ public class Gym {
         System.out.println("6)Cancel Registration");
         System.out.println("7)Get list of Registeration");
         System.out.println("8)Logout");
-        return Integer.parseInt(s.nextLine().trim());
-    }    
+        return inputNum();
+    }
+    
+    public static void trainerLoop(TrainerRole myT){
+        int option = trainerMenu();
+        
+    }
 
 }
