@@ -21,7 +21,7 @@ public class Gym {
         AdminRole admin = new AdminRole();
         TrainerRole trainer = new TrainerRole();
         int checker;
-        System.out.println("please enter 1 for being an admin and 2 for being a trainer");
+        System.out.print("Please enter 1 for being an admin and 2 for being a trainer: ");
         checker = inputNum();
         switch (checker) {
             case 1:
@@ -34,13 +34,34 @@ public class Gym {
 
         }
     }
+    
+    public static int inputNum() {
+        Scanner myScan = new Scanner(System.in);
+        return Integer.parseInt(myScan.nextLine().replaceAll(" ", ""));
+    }
 
+    public static double inputNumD() {
+        Scanner myScan = new Scanner(System.in);
+        return Double.parseDouble(myScan.nextLine().replaceAll(" ", ""));
+    }
+
+    public static String inputLine() {
+        Scanner myScan = new Scanner(System.in);
+        return myScan.nextLine().trim();
+    }
+    
+    public static <T extends Entity> void printElements(ArrayList<T> myList){
+        for(T i : myList){
+            System.out.println(i.LineRepresentation());
+        }
+    }
+    
     public static int AdminMenu() {
         System.out.println("Choose one of the following options:");
-        System.out.println("1. add Trainer");
-        System.out.println("2. get list of Trainers");
-        System.out.println("3. remove trainer");
-        System.out.println("4.logout");
+        System.out.println("1)Add Trainer");
+        System.out.println("2)Get list of Trainers");
+        System.out.println("3)Remove trainer");
+        System.out.println("4)Logout");
         return inputNum();
     }
 
@@ -49,22 +70,22 @@ public class Gym {
         do{
             option = AdminMenu();
             switch (option) {
-
                 case 1:
                     addTrainer(admin);
                     break;
                 case 2:
-                    ArrayList<Trainer> ourTrainers = getlistoftrainers(admin);
+                    printElements(admin.getListofTrainers());
                     break;
                 case 3:
                     removetrainer(admin);
                     break;
                 case 4:
-                    logout(admin);
+                    admin.logout();
+                    break;
                 default:
                     System.out.println("Invalid option. ");
             }
-        }while(option!=9);
+        }while(option!=4);
     }
 
     public static void addTrainer(AdminRole admin) {
@@ -80,36 +101,12 @@ public class Gym {
         System.out.println("please enter your trainer phoneNumber");
         String phoneNumber = inputLine();
         admin.addTrainer(trainerId, Name, email, speciality, phoneNumber);
-
-    }
-
-    public static ArrayList<Trainer> getlistoftrainers(AdminRole admin) {
-        return admin.getListofTrainers();
     }
 
     public static void removetrainer(AdminRole admin) {
-        System.out.println("please enter the id of the trainer you want to remove");
+        System.out.println("Please enter the id of the trainer you want to remove");
         String key = inputLine();
         admin.removeTrainer(key);
-    }
-
-    public static void logout(AdminRole admin) {
-        admin.logout();
-    }
-
-    public static int inputNum() {
-        Scanner myScan = new Scanner(System.in);
-        return Integer.parseInt(myScan.nextLine().replaceAll(" ", ""));
-    }
-
-    public static double inputNumD() {
-        Scanner myScan = new Scanner(System.in);
-        return Double.parseDouble(myScan.nextLine().replaceAll(" ", ""));
-    }
-
-    public static String inputLine() {
-        Scanner myScan = new Scanner(System.in);
-        return myScan.nextLine().trim();
     }
 
     public static int trainerMenu() {
@@ -175,12 +172,6 @@ public class Gym {
         System.out.print("Status: ");
         String status = inputLine();
         myT.addMember(MemberID, name, membershipType, email, number, status);
-    }
-    
-    public static <T extends Entity> void printElements(ArrayList<T> myList){
-        for(T i : myList){
-            System.out.println(i.LineRepresentation());
-        }
     }
     
     public static void addClass(TrainerRole myT){

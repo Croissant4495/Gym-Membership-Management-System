@@ -18,7 +18,7 @@ public class TrainerRole {
     private MemberClassRegistrationDatabase registrationDatabase;
     
     public TrainerRole(){
-        this.memberDatabase = new MemberDatabase("‘Members.txt");
+        this.memberDatabase = new MemberDatabase("Members.txt");
         this.classDatabase = new ClassDatabase("Class.txt");
         this.registrationDatabase = new MemberClassRegistrationDatabase("Registration.txt");
         
