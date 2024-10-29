@@ -47,28 +47,33 @@ public class TrainerRole {
         return this.classDatabase.returnAllRecords();
     }
     
-    public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate){
-        if(this.classDatabase.contains(classID)){
-            Class tempClass = (Class)this.classDatabase.getRecord(classID);
-            if(tempClass.getAvailableSeats() > 0){
-                this.registrationDatabase.insertRecord(new MemberClassRegistration(memberID, classID, "active", registrationDate));
-                tempClass.setAvailableSeats(tempClass.getAvailableSeats() - 1);
-                return true;
-            }else{
-                System.out.println("The class is full.");
-                return false;
-            }
-        }else{
-            System.out.println("This class does not exist.");
+    public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
+   
+    if (!this.memberDatabase.contains(memberID)) {
+        System.out.println("Member does not exist in the system.");
+        return false;
+    }
+    if (this.classDatabase.contains(classID)) {
+        Class tempClass = (Class) this.classDatabase.getRecord(classID);
+        if (tempClass.getAvailableSeats() > 0) {
+            this.registrationDatabase.insertRecord(new MemberClassRegistration(memberID, classID, "active", registrationDate));
+            tempClass.setAvailableSeats(tempClass.getAvailableSeats() - 1);
+            return true;
+        } else {
+            System.out.println("The class is full.");
             return false;
         }
+    } else {
+        System.out.println("This class does not exist.");
+        return false;
     }
+}
     
     public boolean cancelRegistration(String memberID, String classID){
         String searchKey = memberID + classID;
         if(this.registrationDatabase.contains(searchKey)){
             MemberClassRegistration tempReg = (MemberClassRegistration)this.registrationDatabase.getRecord(searchKey);
-            if(tempReg.getRegistrationDate().isBefore(LocalDate.now().plusDays(3))){
+            if(!tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))){
                 tempReg.setRegistrationStatus("canceled");
                 Class tempClass = (Class)this.classDatabase.getRecord(tempReg.getClassID());
                 tempClass.setAvailableSeats(tempClass.getAvailableSeats() + 1);

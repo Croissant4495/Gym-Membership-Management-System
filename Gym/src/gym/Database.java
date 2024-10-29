@@ -64,16 +64,29 @@ abstract public class Database{
         if (!this.contains(record.getSearchKey())) {
             records.add(record);
         }
+        else
+        {
+            System.out.println("record already exists");
+        }
     }
     
     public void deleteRecord(String key){
-        for (int i = 0; i < records.size(); i++) {
-            if (records.get(i).getSearchKey().equals(key)) {
-                records.remove(i);
-                break;
-            }
-        }
+//        for (int i = 0; i < records.size(); i++) {
+//            if (records.get(i).getSearchKey().equals(key)) {
+//                records.remove(i);
+//                
+//               
+//               return ;
+//            }
+//        }
+Entity recorder = getRecord(key);
+    if (recorder != null) {
+        records.remove(recorder);
+    } else {
+        System.out.println("Record not found.");
     }
+}
+    
     public void saveToFile(){
         try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(this.filename))) {
             for (Entity myE : records) {

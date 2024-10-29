@@ -92,15 +92,15 @@ public class Gym {
 
     public static void addTrainer(AdminRole admin) {
         System.out.println("please enter your trainer details");
-        System.out.println("please enter your trainer id:");
+        System.out.print("please enter your trainer id:");
         String trainerId = inputLine();
-        System.out.println("please enter your trainer name:");
+        System.out.print("please enter your trainer name:");
         String Name = inputLine();
-        System.out.println("please enter your trainer email:");
+        System.out.print("please enter your trainer email:");
         String email = inputLine();
-        System.out.println("please enter your trainer speciality");
+        System.out.print("please enter your trainer speciality");
         String speciality = inputLine();
-        System.out.println("please enter your trainer phoneNumber");
+        System.out.print("please enter your trainer phoneNumber");
         String phoneNumber = inputLine();
         admin.addTrainer(trainerId, Name, email, speciality, phoneNumber);
     }
