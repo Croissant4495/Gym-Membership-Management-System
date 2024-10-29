@@ -24,7 +24,7 @@ public class Gym {
         ArrayList<MemberClassRegistration> list = mydata.returnAllRecords();
         MemberClassRegistration temp = mydata.createRecordFrom(list.get(0).LineRepresentation());
         mydata.insertRecord(temp);
-
+        System.out.println(temp.LineRepresentation());
         mydata.saveToFile();
     }
     

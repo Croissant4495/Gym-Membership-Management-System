@@ -26,15 +26,15 @@ public class AdminRole {
     }
     public ArrayList<Trainer> getListofTrainers()
     {
-       return  database.returnAllrecords();
+       return database.returnAllRecords();
     }
    public void removeTrainer (String key)
    {
        database.deleteRecord(key);
    }
-      public void logout()
-       {
-           database.saveToFile();
-       }
+    public void logout()
+     {
+         database.saveToFile();
+     }
   
 }

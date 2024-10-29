@@ -12,6 +12,4 @@ interface Entity {
 
    String LineRepresentation();
    String getSearchKey();
- 
-    
 }

@@ -49,7 +49,7 @@ public class TrainerRole {
     
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate){
         if(this.classDatabase.contains(classID)){
-            Class tempClass = this.classDatabase.getRecord(classID);
+            Class tempClass = (Class)this.classDatabase.getRecord(classID);
             if(tempClass.getAvailableSeats() > 0){
                 this.registrationDatabase.insertRecord(new MemberClassRegistration(memberID, classID, "active", registrationDate));
                 tempClass.setAvailableSeats(tempClass.getAvailableSeats() - 1);
@@ -67,10 +67,10 @@ public class TrainerRole {
     public boolean cancelRegistration(String memberID, String classID){
         String searchKey = memberID + classID;
         if(this.registrationDatabase.contains(searchKey)){
-            MemberClassRegistration tempReg = this.registrationDatabase.getRecord(searchKey);
+            MemberClassRegistration tempReg = (MemberClassRegistration)this.registrationDatabase.getRecord(searchKey);
             if(tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))){
                 tempReg.setRegistrationStatus("canceled");
-                Class tempClass = this.classDatabase.getRecord(tempReg.getClassID());
+                Class tempClass = (Class)this.classDatabase.getRecord(tempReg.getClassID());
                 tempClass.setAvailableSeats(tempClass.getAvailableSeats() + 1);
                 return true;
             }else{
