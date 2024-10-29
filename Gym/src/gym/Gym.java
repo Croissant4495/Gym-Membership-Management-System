@@ -4,8 +4,8 @@
  */
 package gym;
 
-import java.time.LocalDate;
 import java.util.*;
+import java.time.LocalDate;
 
 /**
  *
@@ -99,7 +99,89 @@ public class Gym {
     
     public static void trainerLoop(TrainerRole myT){
         int option = trainerMenu();
-        
+        switch(option){
+            case 1:
+                addMember(myT);
+                break;
+            case 2:
+                printElements(myT.getListOfMembers());
+                break;
+            case 3:
+                addClass(myT);
+                break;
+            case 4:
+                printElements(myT.getListOfClasses());
+                break;
+            case 5:
+                registerForClass(myT);
+                break;
+            case 6:
+                cancelReg(myT);
+                break;
+            case 7:
+                printElements(myT.getListOfRegistration());
+                break;
+            case 8:
+                myT.logout();
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
     }
-
+    
+    public static void addMember(TrainerRole myT){
+        System.out.println("Enter Member details:");
+        System.out.print("Member ID: ");
+        String MemberID = inputLine();
+        System.out.print("Name: ");
+        String name = inputLine();
+        System.out.print("Membership Type: ");
+        String membershipType = inputLine();
+        System.out.print("Email: ");
+        String email = inputLine();
+        System.out.print("Phone Number: ");
+        String number = inputLine();
+        System.out.print("Status: ");
+        String status = inputLine();
+        myT.addMember(MemberID, name, membershipType, email, number, status);
+    }
+    
+    public static <T extends Entity> void printElements(ArrayList<T> myList){
+        for(T i : myList){
+            System.out.println(i.LineRepresentation());
+        }
+    }
+    
+    public static void addClass(TrainerRole myT){
+        System.out.println("Enter Class details:");
+        System.out.print("Class ID: ");
+        String classID = inputLine();
+        System.out.print("Name: ");
+        String name = inputLine();
+        System.out.print("Trainer ID: ");
+        String trainerID = inputLine();
+        System.out.print("Duration: ");
+        int duration = inputNum();
+        System.out.print("Available Seats: ");
+        int seats = inputNum();
+        myT.addClass(classID, name, trainerID, duration, seats);
+    }
+    
+    public static void registerForClass(TrainerRole myT){
+        System.out.println("Enter Registration details:");
+        System.out.print("Member ID: ");
+        String MemberID = inputLine();
+        System.out.print("Class ID: ");
+        String classID = inputLine();
+        myT.registerMemberForClass(MemberID, classID, LocalDate.now());
+    }
+    
+    public static void cancelReg(TrainerRole myT){
+        System.out.println("Enter your ID and the Class you want to cancel:");
+        System.out.print("Member ID: ");
+        String MemberID = inputLine();
+        System.out.print("Class ID: ");
+        String classID = inputLine();
+        myT.cancelRegistration(MemberID, classID);
+    }
 }
