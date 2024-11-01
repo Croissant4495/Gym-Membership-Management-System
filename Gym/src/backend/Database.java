@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gym;
+package backend;
 
 import java.util.*;
 import java.io.*;
@@ -71,21 +71,13 @@ abstract public class Database{
     }
     
     public void deleteRecord(String key){
-//        for (int i = 0; i < records.size(); i++) {
-//            if (records.get(i).getSearchKey().equals(key)) {
-//                records.remove(i);
-//                
-//               
-//               return ;
-//            }
-//        }
-Entity recorder = getRecord(key);
-    if (recorder != null) {
-        records.remove(recorder);
-    } else {
-        System.out.println("Record not found.");
+    Entity recorder = getRecord(key);
+        if (recorder != null) {
+            records.remove(recorder);
+        } else {
+            System.out.println("Record not found.");
+        }
     }
-}
     
     public void saveToFile(){
         try (BufferedWriter myWriter = new BufferedWriter(new FileWriter(this.filename))) {

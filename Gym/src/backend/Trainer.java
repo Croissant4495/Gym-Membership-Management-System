@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gym;
+package backend;
 
 /**
  *
@@ -24,13 +24,14 @@ public class Trainer implements Entity {
         this.phoneNumber = phoneNumber;
     }
 
-   
-
-   public String LineRepresentation() {
+    @Override
+    public String LineRepresentation() {
         String TrainerDetails = this.trainerId + "," + this.name + "," + this.email + "," + this.speciality + "," + this.phoneNumber;
         return TrainerDetails;
 
     }
+    
+    @Override
     public String getSearchKey()
     {
         return this.trainerId;
