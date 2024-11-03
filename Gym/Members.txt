@@ -1,3 +1,1 @@
-8873,sens,permeim,sens@,0121,active
-8901,abdo,prem,abdo@,083,active
-00000,senssss,prem,sjg@asd,93727,active
+8901,abdo,premium,abdo@gmaol.com,0100070,active
