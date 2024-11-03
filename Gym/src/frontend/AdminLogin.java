@@ -104,16 +104,13 @@ public class AdminLogin extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         String username = UsernameInput.getText().trim();
         String Password = PasswordInput.getText().trim();
-        if(username.equals(LoginCredentials.ADMIN_USERNAME) &&Password.equals(LoginCredentials.ADMIN_PASSWORD))
-        {
-              AdminRoleWindow AdminRoleMenu = new AdminRoleWindow ();
-        AdminRoleMenu.setVisible(true);
-           dispose();
-        }
-        else
-        {
-            
-          JOptionPane.showMessageDialog(this, "Invalid password. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        if (username.equals(LoginCredentials.ADMIN_USERNAME) && Password.equals(LoginCredentials.ADMIN_PASSWORD)) {
+            AdminRoleWindow AdminRoleMenu = new AdminRoleWindow();
+            AdminRoleMenu.setVisible(true);
+            dispose();
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Invalid password. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 

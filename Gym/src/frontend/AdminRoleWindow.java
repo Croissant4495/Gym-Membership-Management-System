@@ -11,14 +11,12 @@ import backend.AdminRole;
  * @author user
  */
 public class AdminRoleWindow extends javax.swing.JFrame {
- private AdminRole admin; 
 
-    // Step 2: Modify constructor to accept Admin object
-    public AdminRoleWindow(AdminRole admin) {
-        this.admin = admin;
-        initComponents();
-    }
+    private AdminRole admin;
+
     public AdminRoleWindow() {
+        setTitle("Admin Role");
+        admin = new AdminRole();
         initComponents();
     }
 
@@ -100,17 +98,20 @@ public class AdminRoleWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddTrainerRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTrainerRoleActionPerformed
-        AddTrainerWindow trainerWindow = new AddTrainerWindow(admin);
+        AddTrainerWindow trainerWindow = new AddTrainerWindow(admin, this);
         trainerWindow.setVisible(true);
+        //dispose();
     }//GEN-LAST:event_AddTrainerRoleActionPerformed
 
     private void RemovingTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovingTrainerActionPerformed
-        RemoveTrainerWindow trainerWindow = new RemoveTrainerWindow();
+        RemoveTrainerWindow trainerWindow = new RemoveTrainerWindow(admin,this);
         trainerWindow.setVisible(true);
     }//GEN-LAST:event_RemovingTrainerActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-        // TODO add your handling code here:
+     admin.logout();
+      System.exit(0);
+     
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void ViewTrainersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTrainersActionPerformed
@@ -143,12 +144,14 @@ public class AdminRoleWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AdminRoleWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-AdminRole admin = new AdminRole(); 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 
-                new AdminRoleWindow(admin).setVisible(true);
+
+                AdminRoleWindow adminRoleWindow = new AdminRoleWindow();
+                adminRoleWindow.setVisible(true);
+
             }
         });
     }

@@ -10,16 +10,16 @@ import backend.AdminRole;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author user
- */
 public class AddTrainerWindow extends javax.swing.JFrame {
 
     private AdminRole admin;
+    private AdminRoleWindow adminRoleMenu;
 
-    public AddTrainerWindow(AdminRole admin) {
-        this.admin = admin; // Assign the passed admin instance to the class variable
+    public AddTrainerWindow(AdminRole admin, AdminRoleWindow adminRoleMenu) {
+        setTitle("Add Trainer");
+        this.admin = admin;
+        this.adminRoleMenu = adminRoleMenu;
+        this.adminRoleMenu.setVisible(false);
         initComponents();
     }
 
@@ -140,14 +140,14 @@ public class AddTrainerWindow extends javax.swing.JFrame {
 
         if (id.isEmpty() || name.isEmpty() || email.isEmpty() || speciality.isEmpty() || phoneNumber.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Some fields are Empty!", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         ArrayList<Entity> existingTrainers = admin.getListofTrainers();
 
         boolean flag = false;
+   
 
-       
         for (Entity trainer : existingTrainers) {
             if (trainer.getSearchKey().equals(id)) {
                 flag = true;
@@ -160,7 +160,8 @@ public class AddTrainerWindow extends javax.swing.JFrame {
         } else {
             admin.addTrainer(id, name, email, speciality, phoneNumber);
             JOptionPane.showMessageDialog(this, "The Trainer with ID " + id + " has been successfully added.", "Success", JOptionPane.INFORMATION_MESSAGE);
-            dispose(); 
+            dispose();
+            adminRoleMenu.setVisible(true);
         }
     }//GEN-LAST:event_AddingTrainerButtonActionPerformed
 
