@@ -63,6 +63,7 @@ abstract public class Database{
     public void insertRecord(Entity record){
         if (!this.contains(record.getSearchKey())) {
             records.add(record);
+             saveToFile(); 
         }
         else
         {
@@ -74,6 +75,7 @@ abstract public class Database{
     Entity recorder = getRecord(key);
         if (recorder != null) {
             records.remove(recorder);
+             saveToFile(); 
         } else {
             System.out.println("Record not found.");
         }

@@ -9,7 +9,6 @@ package backend;
  * @author user
  */
 public interface Entity {
-
    String LineRepresentation();
    String getSearchKey();
 }
