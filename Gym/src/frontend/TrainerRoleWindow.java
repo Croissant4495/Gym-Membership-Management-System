@@ -187,6 +187,15 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
         return false;
     }
     
+    public static Entity getRecord(ArrayList<Entity> myList, String key){
+        for(Entity i : myList){
+            if(i.getSearchKey().equals(key)){
+                return i;
+            }
+        }
+        return null;
+    }
+    
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         this.setVisible(false);
         addMemberWindow myWindow = new addMemberWindow(this, this.myTrainer);
@@ -234,7 +243,9 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_viewClassesButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        AddRegistrationWindow myWindow = new AddRegistrationWindow(this, this.myTrainer);
+        myWindow.setVisible(true);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void cancelRegistrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegistrationButtonActionPerformed

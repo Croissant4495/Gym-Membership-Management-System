@@ -147,7 +147,7 @@ public class AddClassWindow extends javax.swing.JFrame {
         String duration = durationText.getText();
         String seats = seatsText.getText();
                 
-        if(ID.equals("") || name.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")){
+        if(ID.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")){
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
             valid = false;
         }
