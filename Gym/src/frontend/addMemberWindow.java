@@ -14,16 +14,16 @@ import java.util.*;
  * @author Abdel
  */
 public class addMemberWindow extends javax.swing.JFrame {
-    TrainerRole myTrainer;
+    private TrainerRole myTrainer;
     JFrame parent;
     /**
      * Creates new form addMemberWindow
      */
-    public addMemberWindow(JFrame parent) {
+    public addMemberWindow(JFrame parent, TrainerRole myTrainer) {
         setLocationRelativeTo(null);
         initComponents();
-        myTrainer = new TrainerRole();
         this.parent = parent;
+        this.myTrainer = myTrainer;
     }
 
     /**
@@ -234,9 +234,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         String memberType = MembershipText.getText();
         String number = PhoneText.getText();
         String status = StatusText.getText();
-        
-        System.out.println("ID: " + ID);
-        
+                
         if(contains(this.myTrainer.getListOfMembers(), ID)){
             JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " already exists!");
             IDText.setText("");

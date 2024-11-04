@@ -6,17 +6,21 @@ package frontend;
 import backend.*;
 import backend.TrainerRole;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author Abdel
  */
 public class TrainerRoleWindow extends javax.swing.JFrame {
-    /**
-     * Creates new form TrainerRoleWindow
-     */
+    
+    private TrainerRole myTrainer;
+    
     public TrainerRoleWindow() {
+        setTitle("Trainer Role");
         setLocationRelativeTo(null);
+        myTrainer = new TrainerRole();
+        printElements(myTrainer.getListOfMembers());
         initComponents();
     }
 
@@ -177,13 +181,27 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         this.setVisible(false);
-        addMemberWindow myWindow = new addMemberWindow(this);
+        addMemberWindow myWindow = new addMemberWindow(this, this.myTrainer);
         myWindow.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
     private void ViewMembersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMembersButtonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Pringin");
+        ArrayList<Entity> memberList = this.myTrainer.getListOfMembers();
+        String[] columns = new String[]{"ID", "Name", "Email", "Membership Type", "Phone Number", "Status"};
+        
+        String[][] membersTable = new String[memberList.size()][columns.length];
+        for(int i=0; i<memberList.size(); i++){
+            String[] memberData = memberList.get(i).LineRepresentation().split(",");
+            String temp = memberData[2];
+            memberData[2] = memberData[3];
+            memberData[3] = temp;
+            membersTable[i] = memberData;
+        }
+        
+       TableView myTable = new TableView(this,"View Members", columns);
+       this.setVisible(false);
+       myTable.setData(membersTable);
+       myTable.setVisible(true);
     }//GEN-LAST:event_ViewMembersButtonActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
@@ -191,8 +209,18 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_addClassButtonActionPerformed
 
     private void viewClassesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassesButtonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Pringin");
+        ArrayList<Entity> classList = this.myTrainer.getListOfClasses();
+        String[] columns = new String[]{"Class ID", "Class Name", "Trainer ID", "Duration", "Max Participants"};
+        String[][] classTable = new String[classList.size()][columns.length];
+        
+        for(int i=0; i<classList.size(); i++){
+            classTable[i] = classList.get(i).LineRepresentation().split(",");
+        }
+        
+       TableView myTable = new TableView(this,"View Classes", columns);
+       this.setVisible(false);
+       myTable.setData(classTable);
+       myTable.setVisible(true);
     }//GEN-LAST:event_viewClassesButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
@@ -204,7 +232,19 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelRegistrationButtonActionPerformed
 
     private void viewRegistrationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsButtonActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Entity> regList = this.myTrainer.getListOfRegistration();
+        String[] columns = new String[]{"Member ID", "Class ID", "Registration Date"};
+        String[][] regTable = new String[regList.size()][columns.length];
+        
+        for(int i=0; i<regList.size(); i++){
+            String[] regData = regList.get(i).LineRepresentation().split(",");
+            regTable[i] = Arrays.copyOf(regData, 3);
+        }
+        
+       TableView myTable = new TableView(this,"View Registrations", columns);
+       this.setVisible(false);
+       myTable.setData(regTable);
+       myTable.setVisible(true);
     }//GEN-LAST:event_viewRegistrationsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

@@ -1,3 +1,5 @@
 8901,abdo,premium,abdo@gmaol.com,0100070,active
 8772,Joe,premium,Joe@gmail.com,01000709618,active
 1234,test,test,test,test,test
+8102,Tom,Poor,Tom@gmail.com,1232131231,active
+8999,Omar,Yearly,Omar@hotmail.com,01245434104,Active
