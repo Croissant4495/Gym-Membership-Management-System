@@ -5,6 +5,8 @@
 package frontend;
 
 import backend.AdminRole;
+import backend.Entity;
+import java.util.ArrayList;
 
 /**
  *
@@ -115,7 +117,18 @@ public class AdminRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void ViewTrainersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTrainersActionPerformed
-        // TODO add your handling code here:
+      ArrayList<Entity> TrainerList = this.admin.getListofTrainers();
+        String[] columns = new String[]{" ID", " Name", "Email ", "Speciality", "Phone Number"};
+        String[][] TrainerTable = new String[TrainerList.size()][columns.length];
+        
+        for(int i=0; i<TrainerList.size(); i++){
+            TrainerTable[i] = TrainerList.get(i).LineRepresentation().split(",");
+        }
+        
+       TableView myTable = new TableView(this,"View Classes", columns);
+       this.setVisible(false);
+       myTable.setData(TrainerTable);
+       myTable.setVisible(true);
     }//GEN-LAST:event_ViewTrainersActionPerformed
 
     /**
