@@ -4,6 +4,7 @@
  */
 package backend;
 
+import constants.FileNames;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,8 @@ public class AdminRole {
     private TrainerDatabase database;
 
     public AdminRole() {
-        this.database = new TrainerDatabase("trainer.txt");
-           this.database.readFromFile();
+        this.database = new TrainerDatabase(FileNames.TRAINERS_FILE);
+        this.database.readFromFile();
     }
 
     public void addTrainer(String trainerId, String name, String email, String specialty, String phoneNumber)

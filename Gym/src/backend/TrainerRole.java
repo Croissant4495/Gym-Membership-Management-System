@@ -4,6 +4,7 @@
  */
 package backend;
 
+import constants.FileNames;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -18,9 +19,9 @@ public class TrainerRole {
     private MemberClassRegistrationDatabase registrationDatabase;
     
     public TrainerRole(){
-        this.memberDatabase = new MemberDatabase("Members.txt");
-        this.classDatabase = new ClassDatabase("Class.txt");
-        this.registrationDatabase = new MemberClassRegistrationDatabase("Registration.txt");
+        this.memberDatabase = new MemberDatabase(FileNames.MEMBERS_FILE);
+        this.classDatabase = new ClassDatabase(FileNames.CLASSES_FILE);
+        this.registrationDatabase = new MemberClassRegistrationDatabase(FileNames.REGISTRATIONS_FILE);
         
         this.memberDatabase.readFromFile();
         this.classDatabase.readFromFile();
