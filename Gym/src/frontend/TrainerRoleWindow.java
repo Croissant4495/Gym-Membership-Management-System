@@ -20,7 +20,6 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
         setTitle("Trainer Role");
         setLocationRelativeTo(null);
         myTrainer = new TrainerRole();
-        printElements(myTrainer.getListOfMembers());
         initComponents();
     }
 
@@ -179,6 +178,15 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
         }
     }
     
+    public static boolean contains(ArrayList<Entity> myList, String key){
+        for(Entity i : myList){
+            if(i.getSearchKey().equals(key)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         this.setVisible(false);
         addMemberWindow myWindow = new addMemberWindow(this, this.myTrainer);
@@ -205,7 +213,9 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ViewMembersButtonActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
-       
+        this.setVisible(false);
+        AddClassWindow myWindow = new AddClassWindow(this, this.myTrainer);
+        myWindow.setVisible(true);
     }//GEN-LAST:event_addClassButtonActionPerformed
 
     private void viewClassesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassesButtonActionPerformed
@@ -248,8 +258,8 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_viewRegistrationsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-       myTrainer.logout();
-      System.exit(0);
+        myTrainer.logout();
+        System.exit(0);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**

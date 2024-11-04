@@ -17,7 +17,7 @@ public class TrainerLogin extends javax.swing.JFrame {
      * Creates new form TrainerLogin
      */
     public TrainerLogin() {
-         setTitle("Trainer Login");
+        setTitle("Trainer Login");
         initComponents();
     }
 

@@ -20,7 +20,7 @@ public class addMemberWindow extends javax.swing.JFrame {
      * Creates new form addMemberWindow
      */
     public addMemberWindow(JFrame parent, TrainerRole myTrainer) {
-        setTitle("add member");
+        setTitle("Add member");
         setLocationRelativeTo(null);
         initComponents();
         this.parent = parent;
@@ -56,9 +56,14 @@ public class addMemberWindow extends javax.swing.JFrame {
         StatusText = new javax.swing.JTextPane();
         okButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(400, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         Name.setBackground(new java.awt.Color(51, 255, 51));
         Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -217,15 +222,6 @@ public class addMemberWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private boolean contains(ArrayList<Entity> myList, String key){
-        for(Entity i : myList){
-            if(i.getSearchKey().equals(key)){
-                return true;
-            }
-        }
-        return false;
-    }
     
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         boolean valid = true;
@@ -236,7 +232,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         String number = PhoneText.getText();
         String status = StatusText.getText();
                 
-        if(contains(this.myTrainer.getListOfMembers(), ID)){
+        if(TrainerRoleWindow.contains(this.myTrainer.getListOfMembers(), ID)){
             JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " already exists!");
             IDText.setText("");
             valid = false;
@@ -253,6 +249,11 @@ public class addMemberWindow extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

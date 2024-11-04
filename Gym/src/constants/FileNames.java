@@ -9,8 +9,8 @@ package constants;
  * @author Abdel
  */
 public interface FileNames {
-    String TRAINERS_FILE = "trainer.txt";
-    String MEMBERS_FILE = "trainer.txt";
-    String CLASSES_FILE = "trainer.txt";
-    String REGISTRATIONS_FILE = "trainer.txt";
+    String TRAINERS_FILE = "Trainer.txt";
+    String MEMBERS_FILE = "Members.txt";
+    String CLASSES_FILE = "Class.txt";
+    String REGISTRATIONS_FILE = "Registration.txt";
 }
