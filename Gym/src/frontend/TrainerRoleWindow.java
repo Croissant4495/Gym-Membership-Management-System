@@ -205,7 +205,7 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_ViewMembersButtonActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_addClassButtonActionPerformed
 
     private void viewClassesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassesButtonActionPerformed
@@ -248,7 +248,8 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_viewRegistrationsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+       myTrainer.logout();
+      System.exit(0);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**

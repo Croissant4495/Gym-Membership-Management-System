@@ -125,7 +125,7 @@ public class AdminRoleWindow extends javax.swing.JFrame {
             TrainerTable[i] = TrainerList.get(i).LineRepresentation().split(",");
         }
         
-       TableView myTable = new TableView(this,"View Classes", columns);
+       TableView myTable = new TableView(this,"View Trainers", columns);
        this.setVisible(false);
        myTable.setData(TrainerTable);
        myTable.setVisible(true);

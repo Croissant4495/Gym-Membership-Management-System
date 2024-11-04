@@ -20,6 +20,7 @@ public class addMemberWindow extends javax.swing.JFrame {
      * Creates new form addMemberWindow
      */
     public addMemberWindow(JFrame parent, TrainerRole myTrainer) {
+        setTitle("add member");
         setLocationRelativeTo(null);
         initComponents();
         this.parent = parent;

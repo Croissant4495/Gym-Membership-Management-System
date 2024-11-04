@@ -75,7 +75,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TrainerRoleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrainerRoleButtonActionPerformed
-        // TODO add your handling code here:
+          TrainerLogin Trainerlogin=new TrainerLogin();
+       Trainerlogin.setVisible(true);
+       dispose();
     }//GEN-LAST:event_TrainerRoleButtonActionPerformed
 
     private void AdminRoleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminRoleButtonActionPerformed
