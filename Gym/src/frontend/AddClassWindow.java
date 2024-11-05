@@ -143,35 +143,31 @@ public class AddClassWindow extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         //  boolean valid = true;
-        boolean flag = false;
+     //   boolean flag = false;
         String ID = IDText.getText();
         String name = classText.getText();
         String trainer = trainerText.getText();
         String duration = durationText.getText();
         String seats = seatsText.getText();
-        ArrayList<Entity> existingClasses = myTrainer.getListOfClasses();
+    
         if (ID.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")) {
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
             // valid = false;
               return;
         }
-        for (Entity testclass : existingClasses) {
-            if (testclass.getSearchKey().equals(ID)) {
-                flag = true;
-                break;
-            }
+            if(TrainerRoleWindow.contains(this.myTrainer.getListOfClasses(), ID)){
+            JOptionPane.showMessageDialog(this, "The Class with ID = " + ID + " already exists!");
+            IDText.setText("");
         }
-
-        if (flag) {
-            JOptionPane.showMessageDialog(this, "The class with ID " + ID + " already exists.", "Duplicate ID", JOptionPane.WARNING_MESSAGE);
-
-        } else {
-            this.myTrainer.addClass(ID, name, trainer, Integer.parseInt(duration), Integer.parseInt(seats));
+            else
+            {
+                 this.myTrainer.addClass(ID, name, trainer, Integer.parseInt(duration), Integer.parseInt(seats));
             JOptionPane.showMessageDialog(this, "The Class with id = " + ID + " has been successfully added.");
             this.myTrainer.logout();
             this.parent.setVisible(true);
             this.dispose();
-        }
+            }
+
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

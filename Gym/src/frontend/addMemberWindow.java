@@ -231,7 +231,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         String memberType = MembershipText.getText();
         String number = PhoneText.getText();
         String status = StatusText.getText();
-                
+             
         if(TrainerRoleWindow.contains(this.myTrainer.getListOfMembers(), ID)){
             JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " already exists!");
             IDText.setText("");

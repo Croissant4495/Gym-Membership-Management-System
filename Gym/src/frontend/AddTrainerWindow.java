@@ -149,20 +149,21 @@ public class AddTrainerWindow extends javax.swing.JFrame {
             return;
         }
 
-        ArrayList<Entity> existingTrainers = admin.getListofTrainers();
+//        ArrayList<Entity> existingTrainers = admin.getListofTrainers();
+//
+//        boolean flag = false;
+//   
+//
+//        for (Entity trainer : existingTrainers) {
+//            if (trainer.getSearchKey().equals(id)) {
+//                flag = true;
+//                break;
+//            }
+//        }
 
-        boolean flag = false;
-   
-
-        for (Entity trainer : existingTrainers) {
-            if (trainer.getSearchKey().equals(id)) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (flag) {
-            JOptionPane.showMessageDialog(this, "The Trainer with ID " + id + " already exists.", "Duplicate ID", JOptionPane.WARNING_MESSAGE);
+       if(TrainerRoleWindow.contains(this.admin.getListofTrainers(), id)){
+            JOptionPane.showMessageDialog(this, "The Trainer with ID = " + id + " already exists!");
+            InputId.setText("");
         } else {
             admin.addTrainer(id, name, email, speciality, phoneNumber);
             JOptionPane.showMessageDialog(this, "The Trainer with ID " + id + " has been successfully added.", "Success", JOptionPane.INFORMATION_MESSAGE);

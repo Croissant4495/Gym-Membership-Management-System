@@ -196,11 +196,11 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     // Temp
-    public static <T extends Entity> void printElements(ArrayList<T> myList){
-        for(T i : myList){
-            System.out.println(i.LineRepresentation());
-        }
-    }
+//    public static <T extends Entity> void printElements(ArrayList<T> myList){
+//        for(T i : myList){
+//            System.out.println(i.LineRepresentation());
+//        }
+//    }
     
     public static boolean contains(ArrayList<Entity> myList, String key){
         for(Entity i : myList){

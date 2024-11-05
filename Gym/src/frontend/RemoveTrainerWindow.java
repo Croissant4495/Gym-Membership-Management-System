@@ -88,20 +88,25 @@ public class RemoveTrainerWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The field is Empty!", " Message", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        boolean trainerFound = false;
-        ArrayList<Entity> existingTrainers = admin.getListofTrainers();
-        for (Entity trainer : existingTrainers) {
-            if (trainer.getSearchKey().equals(id)) {
-                trainerFound = true;
-                admin.removeTrainer(id);
-                JOptionPane.showMessageDialog(this, "Trainer with Id= " + id + "has been deleted", "Message", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
+     //   boolean trainerFound = false;
+     //   ArrayList<Entity> existingTrainers = admin.getListofTrainers();
+//        for (Entity trainer : existingTrainers) {
+//            if (trainer.getSearchKey().equals(id)) {
+//                trainerFound = true;
+//                admin.removeTrainer(id);
+//                JOptionPane.showMessageDialog(this, "Trainer with Id= " + id + "has been deleted", "Message", JOptionPane.INFORMATION_MESSAGE);
+//                break;
+//            }
+if(TrainerRoleWindow.contains(this.admin.getListofTrainers(), id)){
+             JOptionPane.showMessageDialog(this, "Trainer with Id= " + id + "has been deleted", "Message", JOptionPane.INFORMATION_MESSAGE);
+                   admin.removeTrainer(id);
+            
+            
+        } else {
+                JOptionPane.showMessageDialog(this, " The Trainer with Id= " + id + " does not exist!", "Message", JOptionPane.ERROR_MESSAGE);
+
         }
-        if (!trainerFound) {
-            JOptionPane.showMessageDialog(this, " The Trainer with Id= " + id + " does not exist!", "Message", JOptionPane.ERROR_MESSAGE);
-           
-        }
+      
         dispose();
         this.parent.setVisible(true);
     }//GEN-LAST:event_RemoveTrainerButtonActionPerformed
