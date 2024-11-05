@@ -108,18 +108,18 @@ public class CancelRegistrationWindow extends javax.swing.JFrame {
         String classID = classText.getText();
 
         if(memberID.equals("") || classID.equals("")){
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+            JOptionPane.showMessageDialog(this, "Please fill all fields.", "Message", JOptionPane.ERROR_MESSAGE);
             valid = false;
         }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfMembers(), memberID)){
-            JOptionPane.showMessageDialog(this, "Member is not in the system.");
+            JOptionPane.showMessageDialog(this, "Member is not in the system.", "Message", JOptionPane.ERROR_MESSAGE);
             memberText.setText("");
             valid = false;
         }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfClasses(), classID)){
-            JOptionPane.showMessageDialog(this, "Class is not in the system.");
+            JOptionPane.showMessageDialog(this, "Class is not in the system.", "Message", JOptionPane.ERROR_MESSAGE);
             classText.setText("");
             valid = false;
         }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfRegistration(), memberID.concat(classID))){
-            JOptionPane.showMessageDialog(this, "Member is not registered to this class.");
+            JOptionPane.showMessageDialog(this, "Member is not registered to this class.", "Message", JOptionPane.ERROR_MESSAGE);
             memberText.setText("");
             classText.setText("");
             valid = false;
@@ -128,7 +128,7 @@ public class CancelRegistrationWindow extends javax.swing.JFrame {
         if(valid){
             MemberClassRegistration tempReg = (MemberClassRegistration) TrainerRoleWindow.getRecord(this.myTrainer.getListOfRegistration(), memberID.concat(classID));
             if (tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))) {
-                JOptionPane.showMessageDialog(this, "More than 3 days have passed, Cancellation failed.");
+                JOptionPane.showMessageDialog(this, "More than 3 days have passed, Cancellation failed.", "Message", JOptionPane.ERROR_MESSAGE);
                 memberText.setText("");
                 classText.setText("");
                 valid = false;

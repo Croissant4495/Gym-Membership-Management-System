@@ -151,12 +151,12 @@ public class AddClassWindow extends javax.swing.JFrame {
         String seats = seatsText.getText();
     
         if (ID.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+            JOptionPane.showMessageDialog(this, "Please fill all fields.", "Message", JOptionPane.ERROR_MESSAGE);
             // valid = false;
               return;
         }
             if(TrainerRoleWindow.contains(this.myTrainer.getListOfClasses(), ID)){
-            JOptionPane.showMessageDialog(this, "The Class with ID = " + ID + " already exists!");
+            JOptionPane.showMessageDialog(this, "The Class with ID = " + ID + " already exists!", "Message", JOptionPane.ERROR_MESSAGE);
             IDText.setText("");
         }
             else

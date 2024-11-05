@@ -134,18 +134,18 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         }
         
         if(memberID.equals("") || classID.equals("")){
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+            JOptionPane.showMessageDialog(this, "Please fill all fields.", "Message", JOptionPane.ERROR_MESSAGE);
             valid = false;
         }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfMembers(), memberID)){
-            JOptionPane.showMessageDialog(this, "Member is not in the system.");
+            JOptionPane.showMessageDialog(this, "Member is not in the system.", "Message", JOptionPane.ERROR_MESSAGE);
             memberText.setText("");
             valid = false;
         }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfClasses(), classID)){
-            JOptionPane.showMessageDialog(this, "Class is not in the system.");
+            JOptionPane.showMessageDialog(this, "Class is not in the system.", "Message", JOptionPane.ERROR_MESSAGE);
             classText.setText("");
             valid = false;
         }else if(TrainerRoleWindow.contains(this.myTrainer.getListOfRegistration(), memberID.concat(classID))){
-            JOptionPane.showMessageDialog(this, "Member is already registered to this class.");
+            JOptionPane.showMessageDialog(this, "Member is already registered to this class.", "Message", JOptionPane.ERROR_MESSAGE);
             memberText.setText("");
             classText.setText("");
             valid = false;
@@ -154,7 +154,7 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         if(valid){
             Class tempClass = (Class) TrainerRoleWindow.getRecord(this.myTrainer.getListOfClasses(), classID);
             if (tempClass.getAvailableSeats() <= 0) {
-                JOptionPane.showMessageDialog(this, "There are no avaliable seats.");
+                JOptionPane.showMessageDialog(this, "There are no avaliable seats.", "Message", JOptionPane.ERROR_MESSAGE);
                 memberText.setText("");
                 classText.setText("");
                 valid = false;

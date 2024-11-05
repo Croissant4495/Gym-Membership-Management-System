@@ -233,17 +233,17 @@ public class addMemberWindow extends javax.swing.JFrame {
         String status = StatusText.getText();
              
         if(TrainerRoleWindow.contains(this.myTrainer.getListOfMembers(), ID)){
-            JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " already exists!");
+            JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " already exists!", "Message", JOptionPane.ERROR_MESSAGE);
             IDText.setText("");
             valid = false;
         }else if(ID.equals("") || name.equals("") || email.equals("") || memberType.equals("") || number.equals("") || status.equals("")){
-            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+            JOptionPane.showMessageDialog(this, "Please fill all fields.", "Message", JOptionPane.ERROR_MESSAGE);
             valid = false;
         }
         
         if(valid){
             this.myTrainer.addMember(ID, name, memberType, email, number, status);
-            JOptionPane.showMessageDialog(this, "The Member with id = " + ID + " has been successfully added.");
+            JOptionPane.showMessageDialog(this, "The Member with id = " + ID + " has been successfully added.", "Message", JOptionPane.ERROR_MESSAGE);
             this.myTrainer.logout();
             this.parent.setVisible(true);
             this.dispose();

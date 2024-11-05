@@ -148,19 +148,6 @@ public class AddTrainerWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Some fields are Empty!", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-//        ArrayList<Entity> existingTrainers = admin.getListofTrainers();
-//
-//        boolean flag = false;
-//   
-//
-//        for (Entity trainer : existingTrainers) {
-//            if (trainer.getSearchKey().equals(id)) {
-//                flag = true;
-//                break;
-//            }
-//        }
-
        if(TrainerRoleWindow.contains(this.admin.getListofTrainers(), id)){
             JOptionPane.showMessageDialog(this, "The Trainer with ID = " + id + " already exists!");
             InputId.setText("");
