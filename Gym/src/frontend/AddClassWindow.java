@@ -4,7 +4,9 @@
  */
 package frontend;
 
+import backend.Entity;
 import backend.TrainerRole;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -15,7 +17,7 @@ public class AddClassWindow extends javax.swing.JFrame {
 
     private TrainerRole myTrainer;
     JFrame parent;
-    
+
     public AddClassWindow(JFrame parent, TrainerRole myTrainer) {
         this.setTitle("Add Class");
         initComponents();
@@ -140,19 +142,30 @@ public class AddClassWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        boolean valid = true;
+        //  boolean valid = true;
+        boolean flag = false;
         String ID = IDText.getText();
         String name = classText.getText();
         String trainer = trainerText.getText();
         String duration = durationText.getText();
         String seats = seatsText.getText();
-                
-        if(ID.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")){
+        ArrayList<Entity> existingClasses = myTrainer.getListOfClasses();
+        if (ID.equals("") || name.equals("") || trainer.equals("") || duration.equals("") || seats.equals("")) {
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
-            valid = false;
+            // valid = false;
+              return;
         }
-        
-        if(valid){
+        for (Entity testclass : existingClasses) {
+            if (testclass.getSearchKey().equals(ID)) {
+                flag = true;
+                break;
+            }
+        }
+
+        if (flag) {
+            JOptionPane.showMessageDialog(this, "The class with ID " + ID + " already exists.", "Duplicate ID", JOptionPane.WARNING_MESSAGE);
+
+        } else {
             this.myTrainer.addClass(ID, name, trainer, Integer.parseInt(duration), Integer.parseInt(seats));
             JOptionPane.showMessageDialog(this, "The Class with id = " + ID + " has been successfully added.");
             this.myTrainer.logout();
@@ -166,7 +179,7 @@ public class AddClassWindow extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDText;
     private javax.swing.JButton addButton;

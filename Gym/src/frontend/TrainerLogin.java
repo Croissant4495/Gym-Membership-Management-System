@@ -104,7 +104,7 @@ public class TrainerLogin extends javax.swing.JFrame {
             dispose();
         } else {
 
-            JOptionPane.showMessageDialog(this, "Invalid password. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Wrong username or password!", "Message", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 

@@ -32,6 +32,11 @@ public class AdminRoleWindow extends javax.swing.JFrame {
         Logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         AddTrainerRole.setBackground(new java.awt.Color(0, 0, 0));
         AddTrainerRole.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,19 +105,30 @@ public class AdminRoleWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddTrainerRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTrainerRoleActionPerformed
-        AddTrainerWindow trainerWindow = new AddTrainerWindow(admin, this);
-        trainerWindow.setVisible(true);
-        //dispose();
+
+         this.setVisible(false);
+         AddTrainerWindow trainerWindow = new AddTrainerWindow(this, this.admin);
+               trainerWindow.setVisible(true);
+
+
+       
     }//GEN-LAST:event_AddTrainerRoleActionPerformed
 
     private void RemovingTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovingTrainerActionPerformed
-        RemoveTrainerWindow trainerWindow = new RemoveTrainerWindow(admin,this);
-        trainerWindow.setVisible(true);
+//       
+           this.setVisible(false);
+         RemoveTrainerWindow trainerWindow = new RemoveTrainerWindow(this,this.admin);
+               trainerWindow.setVisible(true);
     }//GEN-LAST:event_RemovingTrainerActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
      admin.logout();
-      System.exit(0);
+       this.setVisible(false);
+       AdminLogin adminlogin=new AdminLogin();
+         adminlogin.setVisible(true);
+       
+       
+     
      
     }//GEN-LAST:event_LogoutActionPerformed
 
@@ -130,6 +146,10 @@ public class AdminRoleWindow extends javax.swing.JFrame {
        myTable.setData(TrainerTable);
        myTable.setVisible(true);
     }//GEN-LAST:event_ViewTrainersActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

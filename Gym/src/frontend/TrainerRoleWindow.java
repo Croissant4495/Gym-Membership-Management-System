@@ -48,64 +48,88 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
 
         TrainerContainer.setPreferredSize(new java.awt.Dimension(350, 400));
 
+        addMemberButton.setBackground(new java.awt.Color(0, 0, 0));
+        addMemberButton.setForeground(new java.awt.Color(255, 255, 255));
         addMemberButton.setText("Add Member");
         addMemberButton.setAlignmentX(0.5F);
+        addMemberButton.setOpaque(true);
         addMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addMemberButtonActionPerformed(evt);
             }
         });
 
+        ViewMembersButton.setBackground(new java.awt.Color(0, 0, 0));
+        ViewMembersButton.setForeground(new java.awt.Color(255, 255, 255));
         ViewMembersButton.setText("View Members");
         ViewMembersButton.setAlignmentX(0.5F);
+        ViewMembersButton.setOpaque(true);
         ViewMembersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewMembersButtonActionPerformed(evt);
             }
         });
 
+        addClassButton.setBackground(new java.awt.Color(0, 0, 0));
+        addClassButton.setForeground(new java.awt.Color(255, 255, 255));
         addClassButton.setText("Add Class");
         addClassButton.setAlignmentX(0.5F);
+        addClassButton.setOpaque(true);
         addClassButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addClassButtonActionPerformed(evt);
             }
         });
 
+        viewClassesButton.setBackground(new java.awt.Color(0, 0, 0));
+        viewClassesButton.setForeground(new java.awt.Color(255, 255, 255));
         viewClassesButton.setText("View Classes");
         viewClassesButton.setAlignmentX(0.5F);
+        viewClassesButton.setOpaque(true);
         viewClassesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewClassesButtonActionPerformed(evt);
             }
         });
 
+        registerButton.setBackground(new java.awt.Color(0, 0, 0));
+        registerButton.setForeground(new java.awt.Color(255, 255, 255));
         registerButton.setText("Register Member for Class");
         registerButton.setAlignmentX(0.5F);
+        registerButton.setOpaque(true);
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
 
+        cancelRegistrationButton.setBackground(new java.awt.Color(0, 0, 0));
+        cancelRegistrationButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelRegistrationButton.setText("Cancel Registration");
         cancelRegistrationButton.setAlignmentX(0.5F);
+        cancelRegistrationButton.setOpaque(true);
         cancelRegistrationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelRegistrationButtonActionPerformed(evt);
             }
         });
 
+        viewRegistrationsButton.setBackground(new java.awt.Color(0, 0, 0));
+        viewRegistrationsButton.setForeground(new java.awt.Color(255, 255, 255));
         viewRegistrationsButton.setText("View Registrations");
         viewRegistrationsButton.setAlignmentX(0.5F);
+        viewRegistrationsButton.setOpaque(true);
         viewRegistrationsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewRegistrationsButtonActionPerformed(evt);
             }
         });
 
+        logoutButton.setBackground(new java.awt.Color(0, 0, 0));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
         logoutButton.setAlignmentX(0.5F);
+        logoutButton.setOpaque(true);
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutButtonActionPerformed(evt);
@@ -272,7 +296,9 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         myTrainer.logout();
-        System.exit(0);
+         this.setVisible(false);
+       TrainerLogin trainerlogin=new TrainerLogin();
+         trainerlogin.setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**

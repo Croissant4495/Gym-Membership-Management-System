@@ -6,6 +6,7 @@ package frontend;
 
 import backend.AdminRole;
 import constants.LoginCredentials;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,7 @@ public class AdminLogin extends javax.swing.JFrame {
     AdminRole myadmin = new AdminRole();
 
     public AdminLogin() {
+       
         setTitle("Admin Login");
         initComponents();
     }

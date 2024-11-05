@@ -4,22 +4,23 @@
  */
 package frontend;
 
-import backend.Entity; // Replace with your actual package
+import backend.Entity; 
 
 import backend.AdminRole;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AddTrainerWindow extends javax.swing.JFrame {
 
     private AdminRole admin;
-    private AdminRoleWindow adminRoleMenu;
+  JFrame parent;
 
-    public AddTrainerWindow(AdminRole admin, AdminRoleWindow adminRoleMenu) {
+    public AddTrainerWindow(JFrame parent,AdminRole admin) {
         setTitle("Add Trainer");
         this.admin = admin;
-        this.adminRoleMenu = adminRoleMenu;
-        this.adminRoleMenu.setVisible(false);
+       this.parent = parent;
+    
         initComponents();
     }
 
@@ -39,7 +40,12 @@ public class AddTrainerWindow extends javax.swing.JFrame {
         InputPhoneNumber = new javax.swing.JTextField();
         AddingTrainerButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         NameLabel.setBackground(new java.awt.Color(204, 255, 204));
         NameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,9 +167,14 @@ public class AddTrainerWindow extends javax.swing.JFrame {
             admin.addTrainer(id, name, email, speciality, phoneNumber);
             JOptionPane.showMessageDialog(this, "The Trainer with ID " + id + " has been successfully added.", "Success", JOptionPane.INFORMATION_MESSAGE);
             dispose();
-            adminRoleMenu.setVisible(true);
+            this.parent.setVisible(true);
         }
     }//GEN-LAST:event_AddingTrainerButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+      this.parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
