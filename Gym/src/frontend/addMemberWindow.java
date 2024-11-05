@@ -243,7 +243,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         
         if(valid){
             this.myTrainer.addMember(ID, name, memberType, email, number, status);
-            JOptionPane.showMessageDialog(this, "The Member with id = " + ID + " has been successfully added.", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The Member with ID = " + ID + " has been successfully added.");
             this.myTrainer.logout();
             this.parent.setVisible(true);
             this.dispose();
