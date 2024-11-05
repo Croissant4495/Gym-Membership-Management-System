@@ -125,7 +125,6 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         Date myDate = jDateChooser1.getDate();
         LocalDate date;
         
-        System.out.println("ID: " + memberID + classID);
         if(myDate == null){
             date = LocalDate.now();
         }else{

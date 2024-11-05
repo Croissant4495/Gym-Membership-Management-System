@@ -9,5 +9,4 @@ ew,1,1,1,1
 dfs,aw,w,c,v
 vvedfw,w,w,q,q
 uomarrrr,2,4,1,r
-T201,abdo,abdo,abdo,abdo
 8976,2,1,2,D

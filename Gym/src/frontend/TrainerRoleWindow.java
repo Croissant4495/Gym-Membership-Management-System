@@ -5,6 +5,8 @@
 package frontend;
 import backend.*;
 import backend.TrainerRole;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -193,17 +195,7 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-
-    // Temp
-//    public static <T extends Entity> void printElements(ArrayList<T> myList){
-//        for(T i : myList){
-//            System.out.println(i.LineRepresentation());
-//        }
-//    }
-    
-
-    public static boolean contains(ArrayList<Entity> myList, String key){
+       public static boolean contains(ArrayList<Entity> myList, String key){
         for(Entity i : myList){
             if(i.getSearchKey().equals(key)){
                 return true;
@@ -283,10 +275,11 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
         ArrayList<Entity> regList = this.myTrainer.getListOfRegistration();
         String[] columns = new String[]{"Member ID", "Class ID", "Registration Date"};
         String[][] regTable = new String[regList.size()][columns.length];
-        
+                
         for(int i=0; i<regList.size(); i++){
             String[] regData = regList.get(i).LineRepresentation().split(",");
             regTable[i] = Arrays.copyOf(regData, 3);
+            regTable[i][2] = LocalDate.parse(regTable[i][2], DateTimeFormatter.ofPattern("yyyy-MM-dd")).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         }
         
        TableView myTable = new TableView(this,"View Registrations", columns);
