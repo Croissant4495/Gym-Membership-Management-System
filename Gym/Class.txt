@@ -1,4 +1,4 @@
-C301,Physics,T100,45,30
+C301,Physics,T100,45,29
 C202,Programming,T200,120,58
 C203,Physics,T200,120,2
 C302,Modern,T200,30,3
