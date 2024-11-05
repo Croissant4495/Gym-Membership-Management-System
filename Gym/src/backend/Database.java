@@ -93,5 +93,9 @@ abstract public class Database{
         }
     }
     
+    public void deleteRecord(Entity myReg){
+        this.records.remove(myReg);
+    }
+    
     abstract public Entity createRecordFrom(String line);
 }

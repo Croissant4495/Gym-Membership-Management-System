@@ -249,7 +249,9 @@ public class TrainerRoleWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void cancelRegistrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegistrationButtonActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        CancelRegistrationWindow myWindow = new CancelRegistrationWindow(this, this.myTrainer);
+        myWindow.setVisible(true);
     }//GEN-LAST:event_cancelRegistrationButtonActionPerformed
 
     private void viewRegistrationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsButtonActionPerformed

@@ -75,9 +75,9 @@ public class TrainerRole {
         if(this.registrationDatabase.contains(searchKey)){
             MemberClassRegistration tempReg = (MemberClassRegistration)this.registrationDatabase.getRecord(searchKey);
             if(!tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))){
-                tempReg.setRegistrationStatus("canceled");
                 Class tempClass = (Class)this.classDatabase.getRecord(tempReg.getClassID());
                 tempClass.setAvailableSeats(tempClass.getAvailableSeats() + 1);
+                this.registrationDatabase.deleteRecord(tempReg);
                 return true;
             }else{
                 System.out.println("More than 3 days have passed, Cancellation failed.");

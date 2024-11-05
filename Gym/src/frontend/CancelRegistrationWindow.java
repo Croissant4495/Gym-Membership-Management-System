@@ -15,13 +15,13 @@ import backend.Class;
  *
  * @author user
  */
-public class AddRegistrationWindow extends javax.swing.JFrame {
+public class CancelRegistrationWindow extends javax.swing.JFrame {
 
     private TrainerRole myTrainer;
     JFrame parent;
     
-    public AddRegistrationWindow(JFrame parent, TrainerRole myTrainer) {
-        this.setTitle("Register Member");
+    public CancelRegistrationWindow(JFrame parent, TrainerRole myTrainer) {
+        this.setTitle("Cancel Registeration");
         initComponents();
         this.parent = parent;
         this.myTrainer = myTrainer;
@@ -32,13 +32,11 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        registerButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         classText = new javax.swing.JTextField();
         memberText = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -46,11 +44,6 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-
-        jLabel1.setBackground(new java.awt.Color(204, 255, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registration Date");
-        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(204, 255, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,12 +55,12 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         jLabel3.setText("Class ID");
         jLabel3.setOpaque(true);
 
-        registerButton.setBackground(new java.awt.Color(0, 0, 0));
-        registerButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerButton.setText("Register");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setBackground(new java.awt.Color(0, 0, 0));
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
+        cancelButton.setText("Cancel Registration");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -75,22 +68,20 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(classText, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(memberText, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(55, 55, 55))
+                    .addComponent(memberText, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,33 +94,19 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(classText, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(42, 42, 42)
-                .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addGap(149, 149, 149))
+                .addGap(62, 62, 62)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         boolean valid = true;
         String memberID = memberText.getText();
         String classID = classText.getText();
-        Date myDate = jDateChooser1.getDate();
-        LocalDate date;
-        
-        System.out.println("ID: " + memberID + classID);
-        if(myDate == null){
-            date = LocalDate.now();
-        }else{
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            date = LocalDate.parse(sdf.format(myDate));
-        }
-        
+
         if(memberID.equals("") || classID.equals("")){
             JOptionPane.showMessageDialog(this, "Please fill all fields.");
             valid = false;
@@ -141,17 +118,17 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Class is not in the system.");
             classText.setText("");
             valid = false;
-        }else if(TrainerRoleWindow.contains(this.myTrainer.getListOfRegistration(), memberID.concat(classID))){
-            JOptionPane.showMessageDialog(this, "Member is already registered to this class.");
+        }else if(!TrainerRoleWindow.contains(this.myTrainer.getListOfRegistration(), memberID.concat(classID))){
+            JOptionPane.showMessageDialog(this, "Member is not registered to this class.");
             memberText.setText("");
             classText.setText("");
             valid = false;
         }
         
         if(valid){
-            Class tempClass = (Class) TrainerRoleWindow.getRecord(this.myTrainer.getListOfClasses(), classID);
-            if (tempClass.getAvailableSeats() <= 0) {
-                JOptionPane.showMessageDialog(this, "There are no avaliable seats.");
+            MemberClassRegistration tempReg = (MemberClassRegistration) TrainerRoleWindow.getRecord(this.myTrainer.getListOfRegistration(), memberID.concat(classID));
+            if (tempReg.getRegistrationDate().isBefore(LocalDate.now().minusDays(3))) {
+                JOptionPane.showMessageDialog(this, "More than 3 days have passed, Cancellation failed.");
                 memberText.setText("");
                 classText.setText("");
                 valid = false;
@@ -159,13 +136,13 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
         }
         
         if(valid){
-            this.myTrainer.registerMemberForClass(memberID, classID, date);
-            JOptionPane.showMessageDialog(this, "The Member with id = " + memberID + " has been successfully registered to class " + classID);
+            this.myTrainer.cancelRegistration(memberID, classID);
+            JOptionPane.showMessageDialog(this, "The Member with id = " + memberID + " has been unregistered from class " + classID);
             this.myTrainer.logout();
             this.parent.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_registerButtonActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.parent.setVisible(true);
@@ -174,13 +151,11 @@ public class AddRegistrationWindow extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField classText;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField memberText;
-    private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 }
