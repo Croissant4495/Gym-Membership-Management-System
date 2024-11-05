@@ -21,7 +21,6 @@ public class addMemberWindow extends javax.swing.JFrame {
      */
     public addMemberWindow(JFrame parent, TrainerRole myTrainer) {
         setTitle("Add member");
-        setLocationRelativeTo(null);
         initComponents();
         this.parent = parent;
         this.myTrainer = myTrainer;
@@ -65,13 +64,13 @@ public class addMemberWindow extends javax.swing.JFrame {
             }
         });
 
-        Name.setBackground(new java.awt.Color(51, 255, 51));
+        Name.setBackground(new java.awt.Color(204, 255, 204));
         Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Name.setText("Name");
         Name.setOpaque(true);
         Name.setPreferredSize(new java.awt.Dimension(120, 30));
 
-        ID1.setBackground(new java.awt.Color(51, 255, 51));
+        ID1.setBackground(new java.awt.Color(204, 255, 204));
         ID1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ID1.setText("ID");
         ID1.setOpaque(true);
@@ -94,7 +93,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         NameText.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         jScrollPane3.setViewportView(IDText);
 
-        Name5.setBackground(new java.awt.Color(51, 255, 51));
+        Name5.setBackground(new java.awt.Color(204, 255, 204));
         Name5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Name5.setText("Email");
         Name5.setOpaque(true);
@@ -108,7 +107,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         NameText.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         jScrollPane4.setViewportView(EmailText);
 
-        Name6.setBackground(new java.awt.Color(51, 255, 51));
+        Name6.setBackground(new java.awt.Color(204, 255, 204));
         Name6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Name6.setText("Membership Type");
         Name6.setOpaque(true);
@@ -130,13 +129,13 @@ public class addMemberWindow extends javax.swing.JFrame {
         NameText.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         jScrollPane6.setViewportView(PhoneText);
 
-        Name7.setBackground(new java.awt.Color(51, 255, 51));
+        Name7.setBackground(new java.awt.Color(204, 255, 204));
         Name7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Name7.setText("Phone Number");
         Name7.setOpaque(true);
         Name7.setPreferredSize(new java.awt.Dimension(120, 30));
 
-        Name8.setBackground(new java.awt.Color(51, 255, 51));
+        Name8.setBackground(new java.awt.Color(204, 255, 204));
         Name8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Name8.setText("Status");
         Name8.setOpaque(true);
@@ -150,6 +149,7 @@ public class addMemberWindow extends javax.swing.JFrame {
         NameText.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         jScrollPane7.setViewportView(StatusText);
 
+        okButton.setBackground(new java.awt.Color(0, 0, 0));
         okButton.setText("Add");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
